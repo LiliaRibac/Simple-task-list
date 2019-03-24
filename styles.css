@@ -1,0 +1,66 @@
+* {
+    margin: 0;
+
+}
+
+h1 {
+    color: black;
+    padding-bottom: 10px;
+}
+
+#header {
+    padding: 30px;
+    margin-top: 3%;
+    margin-left: 20%;
+    margin-right: 20%;
+    background-color: #aacabf;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+#entries {
+    background-color: #accebf;
+    text-align: center;
+    padding: 30px;
+    margin: 0 30%;
+    line-height: 2;
+  }
+
+#header input {
+    width: 50%;
+}
+
+#todoList {
+    margin-left: 10%;
+    margin-right: 10%;
+    text-align: left;
+    font-size: 30px;
+
+}
+
+
+#listItem {
+    width: 40px;
+    height: 50px;
+    justify-content: center;
+    align-items: center;
+    padding-left: 15px;
+}
+
+#submit {
+    height: 50px;
+    border: 3px;
+    background-color: #0080ff;
+}
+
+.thrash {
+    border: 3px;
+    border-radius: 5px;
+    background-color: brown;
+
+}
+
+.entry {
+    border-bottom: solid 1px lightslategray;
+
+}
