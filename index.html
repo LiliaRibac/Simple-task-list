@@ -22,7 +22,25 @@
 </head>
 
 <body>
+    <div id="header">
+        <h1 class="display-4 text-center">
+            <i class="fas fa-tasks text-primary"></i> My<span class="text-primary">To-do</span> List</h1>
+        <input type="text" placeholder="Add your to-do here ..." id="listItem">
+        <button id="submit" id="btn" type="submit">Add to-do</button>
 
+
+    </div>
+    <div>
+        <ul id="todoList">
+        </ul>
+        <div id="entries"></div>
+
+
+    </div>
+    <script src="main.js"></script>
+    <script>
+        document.querySelector("#submit").addEventListener("click", add);
+    </script>
 </body>
 
 </html>
