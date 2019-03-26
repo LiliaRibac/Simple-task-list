@@ -1,5 +1,4 @@
 let db;
-var item = 1;
 
 function initDatabase() {
 
@@ -31,19 +30,16 @@ function initDatabase() {
 
     //if no database, create one and fill it with data
     request.onupgradeneeded = function (event) {
-        //   var db = event.target.result;
-        //   var objectStore = db.createObjectStore("list", {keyPath: "something"});
+        var db = event.target.result;
+        var objectStore = db.createObjectStore("list", {
+            keyPath: "id",
+            autoIncrement: true
+        });
 
-        let db = request.result,
-            store = db.createObjectStore("list", {
-                autoIncrement: true
-            });
     };
 };
 
-function something() {
-    item += 1;
-};
+
 
 function count() {
     var objectStore = db.transaction("list").objectStore("list");
@@ -55,7 +51,7 @@ function count() {
         var cursor = event.target.result;
 
         if (cursor) {
-            something();
+            // something();
             cursor.continue();
         } else {
             console.log("No more entries!");
@@ -64,13 +60,10 @@ function count() {
 };
 
 
-
-
 //adds a record as entered in the form
 function add() {
     clearList();
-    something();
-    //get a reference to the fields in html
+
 
     let todo = document.querySelector("#listItem").value;
 
@@ -79,8 +72,8 @@ function add() {
         .transaction(["list"], "readwrite")
         .objectStore("list")
         .add({
-            todo: todo,
-            something: item
+            todo: todo
+            // something: item
         });
 
     //when successfully added to the database
@@ -108,7 +101,7 @@ function readTodoList() {
 
         if (cursor) {
             console.log("todo: " + cursor.value.todo);
-            addEntry(cursor.value.todo, cursor.value.something);
+            addEntry(cursor.value.todo, cursor.value.id);
             cursor.continue();
         } else {
             console.log("No more entries!");
@@ -118,22 +111,22 @@ function readTodoList() {
 
 
 //deletes a record by id
-function remove(text) {
+function remove(id) {
 
     var request = db.transaction(["list"], "readwrite")
         .objectStore("list")
-        .delete(text);
+        .delete(id);
     clearList();
     readTodoList();
 
 
 };
 
-function addEntry(todo, item) {
+function addEntry(todo, id) {
     // Your existing code unmodified...
     var iDiv = document.createElement('div');
     iDiv.className = 'entry ';
-    iDiv.innerHTML = todo + `<button class="thrash m-3 " onclick="remove(${item})">X</button>`;
+    iDiv.innerHTML = todo + `<button class="thrash m-3 " onclick="remove(${id})">X</button>`;
     document.querySelector("#entries").appendChild(iDiv);
 };
 
