@@ -116,7 +116,7 @@ function remove(id) {
     var request = db.transaction(["list"], "readwrite")
         .objectStore("list")
         .delete(id);
-    clearList(id);
+    clearList();
     readTodoList();
 
 
