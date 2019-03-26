@@ -111,12 +111,12 @@ function readTodoList() {
 
 
 //deletes a record by id
-function remove(id) {
+function remove(item) {
 
     var request = db.transaction(["list"], "readwrite")
         .objectStore("list")
-        .delete(id);
-    clearList(id);
+        .delete(item);
+    clearList(item);
     readTodoList();
 
 
